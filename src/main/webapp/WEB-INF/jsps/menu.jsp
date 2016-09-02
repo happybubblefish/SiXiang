@@ -189,10 +189,10 @@
             </div>
             <div class="col span-1-of-2">
                 <ul class="social-links">
-                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/"><i class="ion-social-facebook"></i></a></li>
+               		<li><a href="https://twitter.com/"><i class="ion-social-twitter"></i></a></li>
+                	<li><a href="https://plus.google.com"><i class="ion-social-googleplus"></i></a></li>
+                	<li><a href="https://www.instagram.com"><i class="ion-social-instagram"></i></a></li>
                 </ul>
             </div>
          </div>
@@ -209,34 +209,6 @@
     <script src="assets/vendors/js/jquery.waypoints.min.js"></script>
     <script src="assets/resources/js/script.js"></script>
     <script src="assets/resources/js/shoppingCart.js"></script>
-    
-    <script src="assets/resources/js/addToCart.js">
-		$("#nav-cart").html("&nbsp;&nbsp;" + shoppingCart.countCart());
-
-		$(".add-to-cart").click(function(event) {
-			event.preventDefault();
-			var name = $(this).attr("data-name");
-			var price = Number($(this).attr("data-price"));
-			var id = $(this).attr("data-id");
-			shoppingCart.addItemToCart(name, price, 1);
-
-			var itemList = shoppingCart.listCart();
-
-			var count = 0;
-			for ( var i in itemList) {
-				if (itemList[i].name == name) {
-					count = itemList[i].count;
-				}
-			}
-
-			var output = count + " added to cart";
-			var cc = ".ordered" + id;
-			$(cc).css("opacity", "1");
-			$(cc).html(output);
-
-			var total = shoppingCart.countCart();
-			$("#nav-cart").html("&nbsp;&nbsp;" + total);
-		});
-	</script>
+    <script src="assets/resources/js/addToCart.js"></script>
 </body>
 </html>

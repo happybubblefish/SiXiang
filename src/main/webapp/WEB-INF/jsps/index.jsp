@@ -312,12 +312,10 @@
 	</div>
 	</footer>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
 	<script src="assets/vendors/js/jquery.waypoints.min.js"></script>
 	<script src="assets/resources/js/script.js"></script>
 	<script src="assets/resources/js/shoppingCart.js"></script>
