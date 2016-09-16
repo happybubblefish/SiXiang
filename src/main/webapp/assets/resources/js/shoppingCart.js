@@ -82,7 +82,7 @@ var shoppingCart = (function () {
     }
 
 
-    obj.countCart = function () { // -> return total count
+    obj.countCart = function () { // return total count
         var totalCount = 0;
         for (var i in cart) {
             totalCount += cart[i].count;
@@ -91,7 +91,7 @@ var shoppingCart = (function () {
         return totalCount;
     };
 
-    obj.totalCart = function () { // -> return total cost
+    obj.totalCart = function () { // return total cost
         var totalCost = 0;
         for (var i in cart) {
             totalCost += cart[i].price * cart[i].count;
@@ -99,10 +99,8 @@ var shoppingCart = (function () {
         return totalCost.toFixed(2);
     };
 
-    obj.listCart = function () { // -> array of Items
+    obj.listCart = function () { // array of Items
         var cartCopy = [];
-        console.log("Listing cart");
-        console.log(cart);
         for (var i in cart) {
             console.log(i);
             var item = cart[i];
@@ -116,6 +114,5 @@ var shoppingCart = (function () {
         return cartCopy;
     };
 
-    // ----------------------------
     return obj;
 })();

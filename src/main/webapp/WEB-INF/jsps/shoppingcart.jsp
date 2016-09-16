@@ -17,7 +17,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400"
 	rel="stylesheet">
-<title>Best Chinese Food</title>
+<title>SiXiang</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
