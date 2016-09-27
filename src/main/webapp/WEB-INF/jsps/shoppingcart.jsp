@@ -82,7 +82,7 @@
 	
 	<section class="section-comments">
         <div class="row">
-            <h2>Please enter you information</h2>
+            <h2>Please enter your information</h2>
         </div>
             <form action="#" method="post">
               <div class="row">
@@ -150,11 +150,13 @@
                        <label>&nbsp;</label>
                    </div>
                    <div class="col span-2-of-3 cart-btns">
-                       <input id="place-order-btn" type="submit" value="Place order"/>
+                       <span id="place-order-btn" >Place order</span>
+                       <!-- <input id="place-order-btn" type="submit" value="Place order"/> -->
                        <!-- a href="#" class="cart-btn" id="place-order-btn">Place order</a> -->
                    </div>
                </div>
            </form>
+           <h3 id="orderSucceed"></h3>
     </section>
     <div id="info">
     	<h3></h3>

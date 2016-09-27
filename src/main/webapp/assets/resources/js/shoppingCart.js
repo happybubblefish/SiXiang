@@ -4,9 +4,9 @@ var shoppingCart = (function () {
     var cart = [];
 
     function Item(name, price, count) {
-        this.name = name
-        this.price = price
-        this.count = count
+        this.name = name;
+        this.price = price;
+        this.count = count;
     }
 
     function saveCart() {
@@ -16,7 +16,7 @@ var shoppingCart = (function () {
     function loadCart() {
         cart = JSON.parse(localStorage.getItem("shoppingCart"));
         if (cart === null) {
-            cart = []
+            cart = [];
         }
     }
 
@@ -32,8 +32,6 @@ var shoppingCart = (function () {
                 return;
             }
         }
-
-        console.log("addItemToCart:", name, price, count);
 
         var item = new Item(name, price, count);
         cart.push(item);
@@ -53,8 +51,8 @@ var shoppingCart = (function () {
 
     obj.removeItemFromCart = function (name) { // Removes one item
         for (var i in cart) {
-            if (cart[i].name === name) { // "3" === 3 false
-                cart[i].count--; // cart[i].count --
+            if (cart[i].name === name) {
+                cart[i].count--; 
                 if (cart[i].count === 0) {
                     cart.splice(i, 1);
                 }
@@ -102,12 +100,12 @@ var shoppingCart = (function () {
     obj.listCart = function () { // array of Items
         var cartCopy = [];
         for (var i in cart) {
-            console.log(i);
             var item = cart[i];
-            var itemCopy = {};
-            for (var p in item) {
-                itemCopy[p] = item[p];
-            }
+            var itemCopy = Object.create(item);
+//            var itemCopy = {};
+//            for (var p in item) {
+//                itemCopy[p] = item[p];
+//            }
             itemCopy.total = (item.price * item.count).toFixed(2);
             cartCopy.push(itemCopy);
         }

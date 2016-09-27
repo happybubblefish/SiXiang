@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lin.model.Customer;
 import com.lin.model.Dish;
+import com.lin.model.JsonOrder;
 import com.lin.model.OrderRecord;
 import com.lin.model.UserCartCombo;
 import com.lin.service.CustomerService;
@@ -73,7 +74,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/saveshoppingcart", method = RequestMethod.POST)
 	@ResponseBody
-	public String placeOrder(@RequestBody UserCartCombo ucc, Model model, HttpSession session) {
+	public JsonOrder placeOrder(@RequestBody UserCartCombo ucc, HttpSession session) {
 		OrderRecord order = new OrderRecord();
 		order.setDishLines(ucc.getDishLines());
 		order.setDate(new Date());
@@ -83,8 +84,10 @@ public class HomeController {
 		
 		String email = customer.getEmail();
 		
+		JsonOrder jsonOrder = new JsonOrder();
+		
 		if(email.equals("") || email == null){
-			return "index";
+			jsonOrder.setStatus("Email cannot be empty.");
 		}else{
 			//Check whether the user with the same email is already exists.
 			Customer anotherCustomer = customerService.findCustomerByEmail(email);
@@ -95,11 +98,11 @@ public class HomeController {
 			}else{
 				customer.getOrders().add(order);
 				customerService.save(customer);
-			}
+			}			
 			
-			model.addAttribute("info", "Your order has been sucessfully placed. We will deliver it when it get ready.");
-			
-			return "ordersuccess";
+			jsonOrder.setStatus("Your order has been sucessfully placed. We will deliver it when it get ready.");		
 		}
+		
+		return jsonOrder;
 	}
 }
