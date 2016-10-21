@@ -92,7 +92,7 @@
                    <div class="col span-1-of-3">
                        <input type="text" name="firstname" id="firstname" placeholder="First name" required/>
                    </div>
-                   <div class="col span-1-of-3">
+                   <div id="firstnameError" class="col span-1-of-3 has-error">
                    		
                    </div>
                </div>
@@ -104,7 +104,7 @@
                    <div class="col span-1-of-3">
                        <input type="text" name="lastname" id="lastname" placeholder="Last name" required/>
                    </div>
-                   <div class="col span-1-of-3">
+                   <div id="lastnameError" class="col span-1-of-3 has-error">
                    		
                    </div>
                </div>
@@ -116,7 +116,7 @@
                    <div class="col span-1-of-3">
                        <input type="email" name="email" id="email" placeholder="Your email" required/>
                    </div>
-                   <div class="col span-1-of-3">
+                   <div id="emailError" class="col span-1-of-3 has-error">
                    		
                    </div>
                </div>
@@ -128,7 +128,7 @@
                    <div class="col span-1-of-3">
                        <input type="tel" pattern='[\(]\d{3}[\)][\-]\d{3}[\-]\d{4}'  name="phone" id="phone" placeholder="(123)-456-7890" required/>
                    </div>
-                   <div class="col span-1-of-3">
+                   <div id="phoneError" class="col span-1-of-3 has-error">
                    		
                    </div>
                </div>
@@ -140,7 +140,7 @@
                    <div class="col span-1-of-3">
                        <input type="text" name="address" id="address" placeholder="Apt., street" required/>
                    </div>
-                   <div class="col span-1-of-3">
+                   <div id="addressError" class="col span-1-of-3 has-error">
                    		
                    </div>
                </div>

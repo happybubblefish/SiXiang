@@ -670,6 +670,10 @@ footer .row p{
     color: #000;
 }
 
+.has-error{
+	color: red;	
+}
+
 /*-----------------------*/
 /* Menu sections */
 /*-----------------------*/
