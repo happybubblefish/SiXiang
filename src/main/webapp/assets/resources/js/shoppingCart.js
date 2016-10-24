@@ -101,11 +101,11 @@ var shoppingCart = (function () {
         var cartCopy = [];
         for (var i in cart) {
             var item = cart[i];
-            var itemCopy = Object.create(item);
-//            var itemCopy = {};
-//            for (var p in item) {
-//                itemCopy[p] = item[p];
-//            }
+//            var itemCopy = Object.create(item);
+            var itemCopy = {};
+            for (var p in item) {
+                itemCopy[p] = item[p];
+            }
             itemCopy.total = (item.price * item.count).toFixed(2);
             cartCopy.push(itemCopy);
         }

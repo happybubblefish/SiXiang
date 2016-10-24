@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderColumn;
 
 @Entity
@@ -40,10 +41,22 @@ public class Customer {
 	
 	private String pic;
 	
+	private double rewards;
+	
+	@OneToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL) 
+	@JoinColumn(name="userCredential_id") 
+	private UserCredentials userCredentials;
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="user_id") 
+    @JoinColumn(name="customer_id") 
     @OrderColumn(name = "order_index")
 	private List<OrderRecord> orders = new ArrayList<OrderRecord>();
+	
+//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="customer_id") 
+//    @OrderColumn(name = "comment_index")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	public Long getId() {
 		return id;
@@ -107,5 +120,21 @@ public class Customer {
 
 	public void setOrders(List<OrderRecord> orders) {
 		this.orders = orders;
+	}
+
+	public double getRewards() {
+		return rewards;
+	}
+
+	public void setRewards(double rewards) {
+		this.rewards = rewards;
+	}
+
+	public UserCredentials getUserCredentials() {
+		return userCredentials;
+	}
+
+	public void setUserCredentials(UserCredentials userCredentials) {
+		this.userCredentials = userCredentials;
 	}
 }

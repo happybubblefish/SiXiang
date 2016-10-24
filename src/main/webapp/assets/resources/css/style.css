@@ -287,6 +287,7 @@ h5{
 .pork-img,
 .chicken-img,
 .seafoods-img{
+	position: relative;
     width: 100%;
     overflow: hidden;
 }
@@ -297,6 +298,86 @@ h5{
 .seafoods-img, img{
     width: 100%;
 }
+
+.overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,0.6);
+	transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.overlay:hover{
+	opacity: 1;
+}
+
+.overlay p{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	color:#fff;
+}
+
+.overlay .comment-link{
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	display: block;
+	color:#fff;
+}
+
+.overlay .comment-link a{
+	text-decoration: none;
+	color:#fff;
+}
+
+.spicy-degree{
+	color: red;
+	margin-left: 150px;
+}
+
+/* .ion-chatbubbles{
+	color: cyan;
+} */
+
+/* .beef-img:after,
+.pork-img:after,
+.chicken-img:after,
+.seafoods-img:after{
+	content:'\A';
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+} */
+
+/* .beef-img:hover:after,
+.pork-img:hover:after,
+.chicken-img:hover:after,
+.seafoods-img:hover:after {
+    opacity:1;
+} */
+
+
+
+
+
+/* .beef-img img:hover,
+.pork-img img:hover,
+.chicken-img img:hover,
+.seafoods-img img:hover{
+	opacity: 0.5;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+} */
 
 .section-daily-deals .col img,
 .section-chef-rmd .col img{
@@ -452,6 +533,7 @@ cite img{
 }
 
 input[type="text"], 
+input[type="password"],
 input[type="email"], 
 input[type="tel"],
 select, 
@@ -744,6 +826,14 @@ footer .row p{
 }
 
 /*-----------------------*/
+/* Login */
+/*-----------------------*/
+.btn-login,
+.btn-registration{
+	cursor: pointer;
+}
+
+/*-----------------------*/
 /* Menu title section */
 /*-----------------------*/
 
@@ -801,12 +891,61 @@ footer .row p{
 
 .order-success{
 	margin-top: -50px;
-    color: #000;
-    font-size: 150%;
+    color: red;
+    font-size: 160%;
 }
 
 .order-success-footer{
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/*-----------------------*/
+/* Rewards */
+/*-----------------------*/
+.rewards p{
+	margin-top: 70px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 180%;
+}
+
+/*-----------------------*/
+/* Comments */
+/*-----------------------*/
+.container{
+	margin-top: 80px;
+	height: 100vh;
+}
+
+.container .comment .row{
+	margin-top: 15px;
+    border: 1px solid #BFBFBF; 
+    background-color: white;
+    box-shadow: 2px 2px 2px #aaaaaa;
+    padding: 10px;
+}
+
+.comment p.email{
+	font-size: 80%;
+	font-weight: bold;
+}
+
+.comment p.content{
+	margin-top: 10px;
+}
+
+.comment p.date{
+	font-size: 60%;
+}
+
+.leave-comment{
+	margin-top: 20px;
+}
+
+.comment-warning{
+	font-weight: bold;
+	margin-top: 20px;
 }

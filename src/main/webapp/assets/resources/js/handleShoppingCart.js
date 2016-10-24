@@ -88,121 +88,139 @@ $(function() {
 		displayCart();
 	});
 
-	$("#place-order-btn").click(
-			function(event) {
-				var firstname = $("#firstname").val();
-				var lastname = $("#lastname").val();
-				var email = $("#email").val();
-				var phone = $("#phone").val();
-				var address = $("#address").val();
+	$("#place-order-btn")
+			.click(
+					function(event) {
+						var firstname = $("#firstname").val();
+						var lastname = $("#lastname").val();
+						var email = $("#email").val();
+						var phone = $("#phone").val();
+						var address = $("#address").val();
 
-				var cart = shoppingCart.listCart();
-				var firstNameErrorMsg = "";
-				var lastNameErrorMsg = "";
-				var emailErrorMsg = "";
-				var phoneErrorMsg = "";
-				var addressErrorMsg = "";
+						var cart = shoppingCart.listCart();
+						var firstNameErrorMsg = "";
+						var lastNameErrorMsg = "";
+						var emailErrorMsg = "";
+						var phoneErrorMsg = "";
+						var addressErrorMsg = "";
 
-				if (cart.length == 0 || firstname == "" || lastname == ""
-						|| email == "" || phone == "" || address == "") {
-										
-					if(firstname == ""){
-						firstNameErrorMsg = "First name field is required";
-					}else{
-						firstNameErrorMsg = "";
-					}
-					$("#firstnameError").html(firstNameErrorMsg);
-					
-					if(lastname == ""){
-						lastNameErrorMsg = "Last name field is required";
-					}else{
-						lastNameErrorMsg = "";
-					}
-					$("#lastnameError").html(lastNameErrorMsg);
-					
-					if(email == ""){
-						emailErrorMsg = "Email field is required";
-					}else if(!validateEmail(email)){
-						emailErrorMsg = "Please enter valid email format";
-					}else{
-						emailErrorMsg = "";
-					}
-					$("#emailError").html(emailErrorMsg);
-					
-					if(phone == ""){
-						phoneErrorMsg = "Phone field is required";
-					}else if(!validatePhone(phone)){
-						phoneErrorMsg = "Please enter valid phone format";
-					}else{
-						phoneErrorMsg = "";
-					}
-					$("#phoneError").html(phoneErrorMsg);
-					
-					if(address == ""){
-						addressErrorMsg = "Address field is required";
-					}else{
-						addressErrorMsg = "";
-					}
-					$("#addressError").html(addressErrorMsg);
-					
-					return;
-				}
-				
-				var customer = {};
-				customer.firstName = firstname;
-				customer.lastName = lastname;
-				customer.email = email;
-				customer.phone = phone;
-				customer.address = address;
+						// need more work here
+						if (cart.length == 0 || firstname == ""
+								|| lastname == "" || email == "" || phone == ""
+								|| address == "") {
 
-				var u = {
-					dishLines : cart,
-					customer : customer
-				};
+							if (firstname == "") {
+								firstNameErrorMsg = "First name field is required";
+							} else {
+								firstNameErrorMsg = "";
+							}
+							$("#firstnameError").html(firstNameErrorMsg);
 
-				$.ajax({
-					url : '/SiXiang/saveshoppingcart',
-					data : JSON.stringify(u),
-					type : 'POST',
-					contentType : "application/json; charset=utf-8",
-					dataType : 'json'
-				}).success(hello).error(ajaxFailure);
-				
-				function validateEmail(email) {
-				    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				    
-				    return re.test(email);
-				}
-				
-				function validatePhone(phone){
-					var re = /^[\(]\d{3}[\)][\-]\d{3}[\-]\d{4}$/;
-					
-					return re.test(phone);
-				}
+							if (lastname == "") {
+								lastNameErrorMsg = "Last name field is required";
+							} else {
+								lastNameErrorMsg = "";
+							}
+							$("#lastnameError").html(lastNameErrorMsg);
 
-				function hello(data) {
-					$("#orderSucceed").html(data.status);
+							if (email == "") {
+								emailErrorMsg = "Email field is required";
+							} else if (!validateEmail(email)) {
+								emailErrorMsg = "Please enter valid email format";
+							} else {
+								emailErrorMsg = "";
+							}
+							$("#emailError").html(emailErrorMsg);
 
-					shoppingCart.clearCart();
-					$("#show-cart").html("");
-					$("#count-cart").html("0");
-					$("#total-cart").html("0.00");
-					$("#nav-cart").html("&nbsp;&nbsp;" + "0");
+							if (phone == "") {
+								phoneErrorMsg = "Phone field is required";
+							} else if (!validatePhone(phone)) {
+								phoneErrorMsg = "Please enter valid phone format";
+							} else {
+								phoneErrorMsg = "";
+							}
+							$("#phoneError").html(phoneErrorMsg);
 
-					$("#firstname").val("");
-					$("#lastname").val("");
-					$("#email").val("");
-					$("#phone").val("");
-					$("#address").val("");
-				}
+							if (address == "") {
+								addressErrorMsg = "Address field is required";
+							} else {
+								addressErrorMsg = "";
+							}
+							$("#addressError").html(addressErrorMsg);
 
-				function ajaxFailure(xhr, status, exception) {
-					alert("Error");
-				}
+							return;
+						} else {
+							$("#firstnameError").html("");
+							$("#lastnameError").html("");
+							$("#emailError").html("");
+							$("#phoneError").html("");
+							$("#addressError").html("");
+						}
 
-				// location.reload();
+						var customer = {};
+						customer.firstName = firstname;
+						customer.lastName = lastname;
+						customer.email = email;
+						customer.phone = phone;
+						customer.address = address;
 
-				// $("#info").html("<h3 class='order-success'>Thank you for your
-				// order. We will send it out when it get ready.</h3>");
-			});
+						var u = {
+							dishLines : cart,
+							customer : customer
+						};
+
+						$(function() {
+						    var token = $("meta[name='_csrf']").attr("content");
+						    var header = $("meta[name='_csrf_header']").attr("content");
+						    $(document).ajaxSend(function(e, xhr, options) {
+						        xhr.setRequestHeader(header, token);
+						    });
+						});
+
+						$.ajax({
+							url : '/SiXiang/saveshoppingcart',
+							data : JSON.stringify(u),
+							type : 'POST',
+							contentType : "application/json; charset=utf-8",
+							dataType : 'json'
+						}).success(hello).error(ajaxFailure);
+
+						function hello(data) {
+							$("#orderSucceed").html(data.status);
+
+							shoppingCart.clearCart();
+							$("#show-cart").html("");
+							$("#count-cart").html("0");
+							$("#total-cart").html("0.00");
+							$("#nav-cart").html("&nbsp;&nbsp;" + "0");
+
+							$("#firstname").val("");
+							$("#lastname").val("");
+							$("#email").val("");
+							$("#phone").val("");
+							$("#address").val("");
+						}
+
+						function ajaxFailure(xhr, status, exception) {
+							 alert("Error");
+						}
+
+						function validateEmail(email) {
+							var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+							return re.test(email);
+						}
+
+						function validatePhone(phone) {
+							var re = /^[\(]\d{3}[\)][\-]\d{3}[\-]\d{4}$/;
+
+							return re.test(phone);
+						}
+
+						// location.reload();
+
+						// $("#info").html("<h3 class='order-success'>Thank you
+						// for your
+						// order. We will send it out when it get ready.</h3>");
+					});
 }());

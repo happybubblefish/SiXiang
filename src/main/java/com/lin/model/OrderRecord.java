@@ -25,6 +25,8 @@ public class OrderRecord {
     @OrderColumn(name = "dishLine_index")
 	private List<DishLine> dishLines = new ArrayList<DishLine>();
 	
+	private double totalPrice;
+	
 	public List<DishLine> getDishLines() {
 		return dishLines;
 	}
@@ -56,5 +58,13 @@ public class OrderRecord {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }

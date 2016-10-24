@@ -13,6 +13,7 @@ public class DishLine {
 	private String name;
 	private double price;
 	private int count;
+	private double total;
 	
 	public long getId() {
 		return id;
@@ -44,5 +45,13 @@ public class DishLine {
 	
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	} 
 }

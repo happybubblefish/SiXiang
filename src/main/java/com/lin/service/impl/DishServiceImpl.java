@@ -1,7 +1,6 @@
 package com.lin.service.impl;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -52,5 +51,10 @@ public class DishServiceImpl implements DishService {
 		List<Dish> dishes = allDishes.stream().filter(d -> d.getKind().getName().equalsIgnoreCase(dishName)).collect(Collectors.toList());
 		
 		return dishes;
+	}
+
+	@Override
+	public Dish findOne(Long dishId) {
+		return dishRepository.findOne(dishId);
 	}	
 }

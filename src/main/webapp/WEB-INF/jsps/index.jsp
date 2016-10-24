@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -42,7 +44,18 @@
 			</a></li>
 			<li><a href="${ contextPath }/menu">Menu</a></li>
 			<li><a href="#reach-us">Contact us</a></li>
-			<li><a href="#">Rewards</a></li>
+			<li><a href="${ contextPath }/rewards">Rewards</a></li>
+			
+			<sec:authorize access="!hasAnyRole('ROLE_USER')">
+				<li><a href="${ contextPath }/login">Login</a></li>
+				<li><a href="${ contextPath }/registration">Registration</a></li>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyRole('ROLE_USER')">
+			<li><a href="${ contextPath }/profile">Profile</a></li>
+				<li><a href="${ contextPath }/logout">Logout</a></li>
+			</sec:authorize>
+			
 		</ul>
 	</div>
 	</nav>

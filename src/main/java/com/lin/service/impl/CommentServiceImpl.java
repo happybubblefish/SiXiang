@@ -27,10 +27,21 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comment> findAllCommentsByEmail(String email) {
 		List<Comment> comments = commentRepository.findAll();
-		List<Comment> result = comments.stream().filter(c -> c.getEmail().equalsIgnoreCase(email)).collect(Collectors.toList());
+		List<Comment> result = comments.stream().filter(c -> c.getCustomer().getEmail().equalsIgnoreCase(email)).collect(Collectors.toList());
 
 		return result;
 	}
-	
-	
+
+	@Override
+	public List<Comment> findAllCommentByDishId(long dishId) {
+		List<Comment> comments = commentRepository.findAll();
+		List<Comment> result = comments.stream().filter(c -> c.getDish().getId() == dishId).collect(Collectors.toList());
+		
+		return result;
+	}
+
+	@Override
+	public Comment save(Comment comment) {
+		return commentRepository.save(comment);
+	}
 }

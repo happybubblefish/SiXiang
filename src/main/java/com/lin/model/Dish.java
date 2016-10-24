@@ -1,12 +1,19 @@
 package com.lin.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Dish {
@@ -24,12 +31,25 @@ public class Dish {
 	@OneToOne(fetch=FetchType.EAGER,  cascade = {CascadeType.PERSIST,CascadeType.REMOVE}) 
 	@JoinColumn(name="kind_id")
 	private Kind kind;
-
+	
 	private double price;
 
 	private float discount;
 	
 	private boolean isChefRmd;
+	
+	@Min(value = 0)
+	@Max(value = 3)
+	private int spicyDegree;
+	
+//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="dish_id") 
+//    @OrderColumn(name = "comment_index")
+	@OneToMany(mappedBy = "dish", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Comment> comments = new ArrayList<Comment>();
+	
+	@Transient
+	private int commentCount;
 
 	private boolean isDelete;
 
@@ -96,6 +116,14 @@ public class Dish {
 	public void setChefRmd(boolean isChefRmd) {
 		this.isChefRmd = isChefRmd;
 	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	public boolean isDelete() {
 		return isDelete;
@@ -103,5 +131,21 @@ public class Dish {
 
 	public void setDelete(boolean isDelete) {
 		this.isDelete = isDelete;
+	}
+
+	public int getCommentCount() {
+		return this.comments.size();
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+
+	public int getSpicyDegree() {
+		return spicyDegree;
+	}
+
+	public void setSpicyDegree(int spicyDegree) {
+		this.spicyDegree = spicyDegree;
 	}
 }

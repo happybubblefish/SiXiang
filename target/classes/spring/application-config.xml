@@ -13,7 +13,7 @@
 	<!-- Jpa configuration -->
 	<context:annotation-config />
 
-	<jpa:repositories base-package="com.lin.repository" />
+	<jpa:repositories base-package="com.lin" />
 
 	<!-- go through and tells Spring to use the persistent context annotation -->
 	<beans:bean
@@ -55,57 +55,38 @@
 		<beans:property name="password" value="root" />
 	</beans:bean>
 
-	<!-- Security configuration -->
-	<!-- auto-config="true: accept all the default and route everything to me. 
-		Also set the basic login form page for us. -->
-	<!-- /** is Ant pattern style matching which is a little bit different with 
-		the wildcard we use. -->
-	<!-- use-expressions="false" default is true, so must use hasRole('ROLE_USER') -->
-
-
-	<!-- <http auto-config="true"> <intercept-url pattern="/" access="hasRole('ROLE_USER')"/> 
-		<intercept-url pattern="/welcome" access="hasRole('ROLE_USER')"/> <form-login 
-		login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error" 
-		username-parameter="username" password-parameter="password"/> <logout logout-success-url="/login?logout" 
-		/> </http> -->
-
-
-
-	<!-- <http auto-config="true" use-expressions="true"> -->
-
-		<!-- <intercept-url pattern="/login.html" access="permitAll" />
-		<intercept-url pattern="/registration.html" access="permitAll" />
+	<http auto-config="true" use-expressions="true">
+		<!-- <intercept-url pattern="/rewards" access="isAuthenticated()"/> -->
+		<!-- <intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/registration" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-		<intercept-url pattern="/logout.html" access="permitAll"/> -->
-		<!-- <intercept-url pattern="/loginFailed.html" access="permitAll"/> -->
+		<intercept-url pattern="/logout" access="permitAll"/> -->
 
-		<!-- <form-login 
-		login-page="/login.html" 
-		login-processing-url="/login.html"
+		<form-login 
+		login-page="/login" 
+		login-processing-url="/login"
+		default-target-url="/index"
 		username-parameter="username" 
 		password-parameter="password" 
-		authentication-failure-url="/login.html?error=true"/>
+		authentication-failure-url="/login?error=true"/>
 		
-		<logout logout-success-url="/logout.html" /> -->
-		<!-- authentication-success-handler-ref="myAuthenticationSuccessHandler" -->
+		<logout logout-success-url="/logout" />
 		
-	<!-- </http> -->
+	</http>
 	
 	<!-- <beans:bean id="myAuthenticationSuccessHandler" class="com.lin.security.MySimpleUrlAuthenticationSuccessHandler"/> -->
 
 	<!-- More concise way -->
-	<!-- <authentication-manager alias="authenticationManager">
-		<authentication-provider user-service-ref="userDetailsService"> -->
-			<!-- <password-encoder hash="md5"/> -->
-			<!-- <password-encoder ref="encoder" /> -->
-			<!-- <jdbc-user-service data-source-ref="dataSource" /> -->
-		<!-- </authentication-provider>
-	</authentication-manager> -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder ref="encoder" />
+		</authentication-provider>
+	</authentication-manager>
 
-	<!-- <beans:bean id="userDetailsService" class="com.lin.service.Impl.UserDetailsServiceImpl" /> -->
+	<beans:bean id="userDetailsService" class="com.lin.service.impl.UserDetailsServiceImpl" />
 
-	<!-- <beans:bean id="encoder"
+	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="11" />
-	</beans:bean> -->
+	</beans:bean>
 </beans:beans>

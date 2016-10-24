@@ -15,4 +15,6 @@ public interface DishService {
 	List<Dish> findFirstNDishes(int limit);
 	
 	List<Dish> findOneKindOfDishes(String dishName);
+	
+	Dish findOne(Long dishId);
 }

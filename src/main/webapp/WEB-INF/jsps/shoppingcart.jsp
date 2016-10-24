@@ -2,10 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="assets/vendors/css/normalize.css" />
@@ -18,9 +20,21 @@
 	href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400"
 	rel="stylesheet">
 <title>SiXiang</title>
-
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Shopping cart</title>
+
+<!-- <script type="text/javascript">
+$(function() {
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });
+});
+ </script> -->
+
 </head>
 <body>
 	<div class="sticky-call-us">
@@ -36,7 +50,17 @@
 					class="ion-ios-cart" id="nav-cart">&nbsp;&nbsp;0</i>&nbsp;
 			</a></li>
 			<li><a href="${ contextPath }/menu">Menu</a></li>
-			<li><a href="#">Rewards</a></li>
+			<li><a href="${ contextPath }/rewards">Rewards</a></li>
+			<li><a href="${ contextPath }/comments?dishId=2">Comments</a></li>
+			
+			<sec:authorize access="!hasAnyRole('ROLE_USER')">
+				<li><a href="${ contextPath }/login">Login</a></li>
+				<li><a href="${ contextPath }/registration">Registration</a></li>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyRole('ROLE_USER')">
+				<li><a href="${ contextPath }/logout">Logout</a></li>
+			</sec:authorize>
 		</ul>
 	</div>
 	</nav> </header>
@@ -156,7 +180,7 @@
                    </div>
                </div>
            </form>
-           <h3 id="orderSucceed"></h3>
+           <p id="orderSucceed"></p>
     </section>
     <div id="info">
     	<h3></h3>
