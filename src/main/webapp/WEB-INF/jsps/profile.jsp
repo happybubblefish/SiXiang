@@ -41,8 +41,6 @@
 					<li><a href="${ contextPath }/menu">Menu</a></li>
 					<li><a href="${ contextPath }/rewards">Rewards</a></li>
 
-					<li><a href="${ contextPath }/comments?dishId=2">Comments</a></li>
-
 					<sec:authorize access="!hasAnyRole('ROLE_USER')">
 						<li><a href="${ contextPath }/login">Login</a></li>
 						<li><a href="${ contextPath }/registration">Registration</a></li>
@@ -88,7 +86,7 @@
 						<label for="phone"><h4>Phone</h4></label>
 					</div>
 					<div class="col span-1-of-3">
-						<form:input path="phone" placeholder="Phone" />
+						 <form:input type="tel" path="phone" placeholder="(123)-456-7890" />
 					</div>
 					<div id="profile-phone" class="col span-1-of-3">
 						<form:errors path="phone" cssClass="error" />

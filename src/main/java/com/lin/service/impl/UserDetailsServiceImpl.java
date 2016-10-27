@@ -24,11 +24,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Transactional(readOnly = true)
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 
-//		List<UserCredentials> userCredentialsList = userCredentialsRepository.findByUsername(username);
-//
-//		if (userCredentialsList.size() == 0) {
-//			return null;
-//		} 
+		// List<UserCredentials> userCredentialsList =
+		// userCredentialsRepository.findByUsername(username);
+		//
+		// if (userCredentialsList.size() == 0) {
+		// return null;
+		// }
 
 		UserCredentials user = userCredentialsRepository.findByUsername(username);
 

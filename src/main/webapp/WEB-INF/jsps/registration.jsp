@@ -40,7 +40,6 @@
 					</a></li>
 					<li><a href="${ contextPath }/menu">Menu</a></li>
 					<li><a href="${ contextPath }/rewards">Rewards</a></li>
-					<li><a href="${ contextPath }/comments?dishId=2">Comments</a></li>
 
 					<sec:authorize access="!hasAnyRole('ROLE_USER')">
 						<li><a href="${ contextPath }/login">Login</a></li>
@@ -76,7 +75,9 @@
 						<label for="password"><h4>Password</h4></label>
 					</div>
 					<div class="col span-1-of-3">
-						<form:input type="password" path="password" placeholder="Password" />
+						<form:input type="password" path="password" placeholder="Password" /><br/>
+						<span class="password-requirement">Password includes 8 - 10 characters</span><br/>
+						<span class="password-requirement">Must have at least 1 lowercase, 1 uppercase and 1 special character</span>
 					</div>
 					<div id="registration-password" class="col span-1-of-3">
 						<form:errors path="password" cssClass="error" />
@@ -84,7 +85,7 @@
 				</div>
 				<div class="row">
 					<div class="col span-1-of-3">
-						<label for="passwordConfirm"><h4>Password</h4></label>
+						<label for="passwordConfirm"><h4>Re-enter password</h4></label>
 					</div>
 					<div class="col span-1-of-3">
 						<form:input type="password" path="passwordConfirm"

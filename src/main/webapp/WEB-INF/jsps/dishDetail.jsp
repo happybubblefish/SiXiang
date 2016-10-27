@@ -36,8 +36,6 @@
 			<li><a href="${ contextPath }/menu">Menu</a></li>
 			<li><a href="${ contextPath }/rewards">Rewards</a></li>
 			
-			
-			
 			<sec:authorize access="!hasAnyRole('ROLE_USER')">
 				<li><a href="${ contextPath }/login">Login</a></li>
 				<li><a href="${ contextPath }/registration">Registration</a></li>

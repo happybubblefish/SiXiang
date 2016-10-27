@@ -36,6 +36,10 @@ body{
     margin: 0 auto;
 }
 
+.error{
+	color: red;
+}
+
 /*-----------------------*/
 /* Reusable components */
 /*-----------------------*/
@@ -833,6 +837,16 @@ footer .row p{
 	cursor: pointer;
 }
 
+.password-requirement{
+	font-size: 80%;
+	color: red;
+}
+
+.login-btn-set{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 /*-----------------------*/
 /* Menu title section */
 /*-----------------------*/
@@ -889,10 +903,11 @@ footer .row p{
 /* Order success section */
 /*-----------------------*/
 
-.order-success{
-	margin-top: -50px;
+#orderSucceed{
+	margin-top: 50px;
     color: red;
     font-size: 160%;
+    text-align: center;
 }
 
 .order-success-footer{

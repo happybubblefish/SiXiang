@@ -44,7 +44,6 @@
 			</a></li>
 			<li><a href="${ contextPath }/menu">Menu</a></li>
 			<li><a href="${ contextPath }/rewards">Rewards</a></li>
-			<li><a href="${ contextPath }/comments?dishId=2">Comments</a></li>
 
 			<sec:authorize access="!hasAnyRole('ROLE_USER')">
 				<li><a href="${ contextPath }/login">Login</a></li>

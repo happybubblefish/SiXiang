@@ -26,6 +26,54 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login page</title>
+<style type="text/css">
+body {
+	height: 100vh;
+}
+
+.gallery {
+	position: relative;
+}
+
+.gallery img {
+	position: absolute;
+	width: 600px;
+	height: 500px;
+	padding: 5px;
+	border: 1px #ccc solid;
+	box-shadow: 1px 3px 2px;
+	background-color: #fff;
+}
+
+.image-box1 img {
+	top: -60px;
+	transform: rotate(15deg);
+}
+
+.image-box2 img {
+	top: 10px;
+	left: 700px;
+	transform: rotate(-10deg);
+}
+
+.image-box3 img {
+	top: 500px;
+	right: -150px;
+	transform: rotate(25deg);
+}
+
+.image-box4 img {
+	top: 500px;
+	left: -10px;
+	transform: rotate(5deg);
+}
+
+.image-box5 img {
+	top: 300px;
+	right: 100px;
+	transform: rotate(5deg);
+}
+</style>
 </head>
 <body>
 	<header>
@@ -53,48 +101,24 @@
 			</div>
 		</nav>
 	</header>
-
 	<div class="container">
-		<div class="row leave-comment">
-			<h2>Please update your password</h2>
-			<form:form commandName="userCredentials" action="${ contextPath }/changepassword"
-				method="post">
-				<div class="row">
-					<div class="col span-1-of-3">
-						<label for="password"><h4>New Password</h4></label>
-					</div>
-					<div class="col span-1-of-3">
-						<form:input type="password" path="password" placeholder="New password" />
-						<span class="password-requirement">Password includes 8 - 10 characters</span><br/>
-						<span class="password-requirement">Must have at least 1 lowercase, 1 uppercase and 1 special character</span>
-					</div>
-					<div id="usercredentials-password" class="col span-1-of-3">
-						<form:errors path="password" cssClass="error" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="col span-1-of-3">
-						<label for="password"><h4>Re-enter Password</h4></label>
-					</div>
-					<div class="col span-1-of-3">
-						<form:input type="password" path="passwordConfirm" placeholder="Confirm password" />
-					</div>
-					<div id="usercredentials-password" class="col span-1-of-3">
-						<form:errors path="passwordConfirm" cssClass="error" />
-					</div>
-				</div>
-				
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-				<div class="row">
-					<div class="col span-1-of-3"></div>
-					<div class="col span-1-of-3">
-						<input type="submit" class="btn btn-full btn-registration"
-							value="Submit" /> <a class="btn btn-ghost btn-cancel"
-							href="${ contextPath }/index">Cancel</a>
-					</div>
-				</div>
-			</form:form>
+		<div class="row">
+			<div class="gallery image-box1">
+				<img src="assets/resources/img/chef_Obama.jpg" alt="chef_Obama" />
+			</div>
+			<div class="gallery image-box2">
+				<img src="assets/resources/img/yao.jpg" alt="yao" />
+			</div>
+			<div class="gallery image-box3">
+				<img src="assets/resources/img/hathaway.jpg" alt="hathaway" />
+			</div>
+			<div class="gallery image-box4">
+				<img src="assets/resources/img/jackie_clinton.jpg"
+					alt="jackie_clinton_sun" />
+			</div>
+			<!-- <div class="gallery image-box5">
+				<img src="assets/resources/img/aromaticshrimp.jpg" alt="" />
+			</div> -->
 		</div>
 	</div>
 	<script
@@ -109,3 +133,5 @@
 	<script src="assets/resources/js/addToCart.js"></script>
 </body>
 </html>
+
+

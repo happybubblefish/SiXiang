@@ -156,6 +156,22 @@ $(function() {
 							$("#phoneError").html("");
 							$("#addressError").html("");
 						}
+						
+						if (!validateEmail(email)) {
+							emailErrorMsg = "Please enter valid email format";
+							$("#emailError").html(emailErrorMsg);
+							return;
+						} else{
+							$("#emailError").html("");
+						}
+						
+						if (!validatePhone(phone)) {
+							phoneErrorMsg = "Please enter valid phone format";
+							$("#phoneError").html(phoneErrorMsg);
+							return;
+						} else{
+							$("#phoneError").html("");
+						}
 
 						var customer = {};
 						customer.firstName = firstname;
@@ -163,6 +179,13 @@ $(function() {
 						customer.email = email;
 						customer.phone = phone;
 						customer.address = address;
+						
+
+						/*firstName : firstname,
+						lastName : lastname,
+						email : email,
+						phone : phone,
+						address : address*/
 
 						var u = {
 							dishLines : cart,
@@ -185,7 +208,7 @@ $(function() {
 							dataType : 'json'
 						}).success(hello).error(ajaxFailure);
 
-						function hello(data) {
+						function hello(data) {					
 							$("#orderSucceed").html(data.status);
 
 							shoppingCart.clearCart();
@@ -202,7 +225,7 @@ $(function() {
 						}
 
 						function ajaxFailure(xhr, status, exception) {
-							 alert("Error");
+							$("#orderSucceed").html("Sorry, your order can not be processed at this moment. Please check later.");
 						}
 
 						function validateEmail(email) {

@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="assets/vendors/css/normalize.css" />
@@ -35,9 +35,7 @@
 			</a></li>
 			<li><a href="${ contextPath }/menu">Menu</a></li>
 			<li><a href="${ contextPath }/rewards">Rewards</a></li>
-			
-			<li><a href="${ contextPath }/comments?dishId=2">Comments</a></li>
-			
+						
 			<sec:authorize access="!hasAnyRole('ROLE_USER')">
 				<li><a href="${ contextPath }/login">Login</a></li>
 				<li><a href="${ contextPath }/registration">Registration</a></li>
@@ -50,26 +48,6 @@
 	</div>
 	</nav> </header>
 	
-	
-	<%-- <body onload='document.f.j_username.focus();'>
-	<div class="login-page">
-		<div class="form">
-		<h3 class="loginTitle">GoFitness Login Page</h3>
-			<form class="login-form" action="${contextPath}/login.html" name="f"
-				method="post">
-				<input type="text" id="username" name="username" placeholder="Username" />
-				<input type="password" id="password" name="password" placeholder="Password" /> 
-				<span class="clearfix"></span>
-				<span class="error">${ error }</span> <input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<button type="submit">login</button>
-				<p class="message"> Not registered? <a href="${ contextPath }/registration.html">Create an account</a>
-				</p>
-			</form>
-		</div>
-	</div>
-</body> --%>
-
 	<section class="section-login">
 		<div class="row">
 			<h2>Please login</h2>
@@ -90,7 +68,7 @@
 						<label for="password"><h4>Password</h4></label>
 					</div>
 					<div class="col span-1-of-3">
-						<input type="text" id="password" name="password" placeholder="Password"/>
+						<input type="password" id="password" name="password" placeholder="Password"/>
 					</div>
 					<div id="login-password" class="col span-1-of-3">
 					
@@ -101,9 +79,12 @@
 						
 					</div>
 					<div class="col span-1-of-3">
-						<input type="submit" class="btn btn-full btn-login" value="Login"/>
-						<a class="btn btn-ghost btn-cancel" href="${ contextPath }/index">Cancel</a>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<span class="login error">${ error }</span>
+						<div class="login-btn-set">
+							<input type="submit" class="btn btn-full btn-login" value="Login"/>
+							<a class="btn btn-ghost btn-cancel" href="${ contextPath }/index">Cancel</a>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						</div>
 						<p class="message"> Not registered? <a href="${ contextPath }/registration.html">Create an account</a>
 					</div>
 				</div>

@@ -7,8 +7,10 @@ import org.springframework.validation.Validator;
 
 import com.lin.model.UserCredentials;
 import com.lin.service.UserCredentialsService;
+import com.lin.utils.EmailChecker;
+import com.lin.utils.PasswordChecker;
 
-@Component
+@Component("userCredentialsValidator")
 public class UserCredentialsValidator implements Validator {
 	
 	@Autowired
@@ -23,14 +25,20 @@ public class UserCredentialsValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		UserCredentials userCredentials = (UserCredentials)target;
 		
-		if(userCredentialsService.findByUsername(userCredentials.getUsername()) != null){
+		if(userCredentials.getUsername().equals("")){
+			errors.rejectValue("username", "Registration.empty.username");
+		}else if(!EmailChecker.validate(userCredentials.getUsername())){
+			errors.rejectValue("username", "Registration.invalid.username");
+		}else if(userCredentialsService.findByUsername(userCredentials.getUsername()) != null){
 			errors.rejectValue("username", "Registration.duplicated.username");
 		}
 		
-		if(!userCredentials.getPassword().equals(userCredentials.getPasswordConfirm())){
+		if(userCredentials.getPassword().equals("")){
+			errors.rejectValue("password", "Registration.empty.password");
+		}else if(!PasswordChecker.validate(userCredentials.getPassword())){
+			errors.rejectValue("password", "Registration.invalid.password");
+		}else if(!userCredentials.getPassword().equals(userCredentials.getPasswordConfirm())){
 			errors.rejectValue("password", "Registration.diff.password");
 		}
-		
 	}
-
 }

@@ -1,7 +1,5 @@
 package com.lin.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,7 +7,6 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,6 +28,8 @@ import com.lin.service.AuthorityService;
 import com.lin.service.CustomerService;
 import com.lin.service.LoginService;
 import com.lin.service.UserCredentialsService;
+import com.lin.utils.PasswordChecker;
+import com.lin.validator.CustomerValidator;
 import com.lin.validator.UserCredentialsValidator;
 
 @Controller
@@ -54,8 +53,15 @@ public class AccountController {
 	@Autowired
 	private LoginService loginService;
 	
+	@Autowired
+	private CustomerValidator customerValidator;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(){
+	public String login(Model model, String error){
+		if(error != null){
+			error = "Username or password is invalid.";
+			model.addAttribute("error", error);
+		}
 		return "login";
 	}
 	
@@ -68,9 +74,9 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String postRegistration(@Valid @ModelAttribute("userCredentials") UserCredentials userCredentials, BindingResult bindingResult){
+	public String postRegistration(@ModelAttribute("userCredentials") UserCredentials userCredentials, BindingResult bindingResult){
 			
-//		userCredentialsValidator.validate(userCredentials, bindingResult);
+		userCredentialsValidator.validate(userCredentials, bindingResult);
 		
 		if(bindingResult.hasErrors()){
 			return "registration";
@@ -110,15 +116,21 @@ public class AccountController {
 		String username = loginService.findLoggedInUsername();
 		Customer customer = customerService.findCustomerByEmail(username);
 		
+		if(customer == null){
+			return "login";
+		}
+		
 		model.addAttribute("customer", customer);
 		
 		return "profile";
 	}
 	
 	@RequestMapping(value = "/editcustomer", method = RequestMethod.POST)
-	public String postEditProfile(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult){
+	public String postEditProfile(@ModelAttribute("customer") Customer customer, BindingResult bindingResult){
+		customerValidator.validate(customer, bindingResult);
+		
 		if(bindingResult.hasErrors()){
-			return "redirect:/profile";
+			return "profile";
 		}
 		
 		String username = loginService.findLoggedInUsername();
@@ -135,17 +147,24 @@ public class AccountController {
 	
 	@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
 	public String changePassword(Model model){
-		UserCredentials userCredentials = new UserCredentials();
+		String username = loginService.findLoggedInUsername();
+		Customer customer = customerService.findCustomerByEmail(username);
 		
+		if(customer == null){
+			return "login";
+		}
+		
+		UserCredentials userCredentials = new UserCredentials();
 		model.addAttribute("userCredentials", userCredentials);
 		
 		return "changePassword";
 	}
 	
 	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
-	public String postChangePassword(@ModelAttribute("usercredentials") UserCredentials userCredentials, BindingResult bindingResult){
-		if(bindingResult.hasErrors()){
-			return "redirect:/changepassword";
+	public String postChangePassword(@ModelAttribute("usercredentials") UserCredentials userCredentials){
+		
+		if(!PasswordChecker.validate(userCredentials.getPassword())){
+			return "changepassword";
 		}
 		
 		String username = loginService.findLoggedInUsername();

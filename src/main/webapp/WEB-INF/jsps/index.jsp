@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -45,6 +46,7 @@
 			<li><a href="${ contextPath }/menu">Menu</a></li>
 			<li><a href="#reach-us">Contact us</a></li>
 			<li><a href="${ contextPath }/rewards">Rewards</a></li>
+			<li><a href="${ contextPath }/gallery">Gallery</a></li>
 			
 			<sec:authorize access="!hasAnyRole('ROLE_USER')">
 				<li><a href="${ contextPath }/login">Login</a></li>
@@ -252,28 +254,34 @@
 	<div class="row">
 		<h2>We value your opinions</h2>
 	</div>
-	<form action="#" method="post">
+	<form:form action="${ contextPath }/opinion" commandName="opinion" method="post">
 		<div class="row">
 			<div class="col span-1-of-3">
 				<label>Name</label>
 			</div>
-			<div class="col span-2-of-3">
-				<input type="text" name="name" id="name" placeholder="Your name" />
+			<div class="col span-1-of-3">
+				<form:input type="text" path="name" placeholder="Your name" />
+			</div>
+			<div id="opinion-name" class="col span-1-of-3">
+				<form:errors path="name" cssClass="error" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col span-1-of-3">
 				<label>Email</label>
 			</div>
-			<div class="col span-2-of-3">
-				<input type="email" name="email" id="email" placeholder="Your email" />
+			<div class="col span-1-of-3">
+				<form:input type="email" path="email" placeholder="Your email" />
+			</div>
+			<div id="opinion-email" class="col span-1-of-3">
+				<form:errors path="email" cssClass="error" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col span-1-of-3">
 				<label>How do you know us</label>
 			</div>
-			<div class="col span-2-of-3">
+			<div class="col span-1-of-3">
 				<select>
 					<option value="friends" selected>Friends</option>
 					<option value="search">Search engine</option>
@@ -281,13 +289,16 @@
 					<option value="others">Others</option>
 				</select>
 			</div>
-		</div> -->
+		</div>
 		<div class="row">
 			<div class="col span-1-of-3">
-				<label>Comments</label>
+				<label>Content</label>
 			</div>
-			<div class="col span-2-of-3">
-				<textarea></textarea>
+			<div class="col span-1-of-3">
+				<form:textarea path="content"></form:textarea>
+			</div>
+			<div id="opinion-content" class="col span-1-of-3">
+				<form:errors path="content" cssClass="error" />
 			</div>
 		</div>
 		<div class="row">
@@ -298,7 +309,7 @@
 				<input class="btn btn-full" type="submit" value="Submit" />
 			</div>
 		</div>
-	</form>
+	</form:form>
 	</section>
 	<footer>
 	<div class="row">
