@@ -1,7 +1,33 @@
 # SiXiang
-A web-based restaurant app.
-This is the first version which I only spent 4 days on it, including collecting the materials from internet, designing the models and UI, implementing the code. More functionalities will be coming soon.
-Please check the demo for current version of application: https://youtu.be/KpZa3jrEf90
+A web-based restaurant app.<br/><br/>
+
+Declaimer: this app is for study purpose. All the images are from internet. Please contact me at lin.cong8066@gmail.com if you have any concern. Thanks:) <br/><br/>
+
+V1.1 <br/>
+--- Four days work to collect materials, design (includes project architecture and business model) and implement code. User can browse food and place order. 
+
+V1.2 <br/>
+Added: <br/>
+--- Authentication and authorization (role based access to certain page).<br/>
+--- Validation and transaction management.<br/>
+--- Editing personal profile module.<br/>
+--- Updating password part.<br/>
+--- Comment module for each dish.<br/>
+--- Spicy degree for each dish.<br/>
+--- Overlay effect on each dish.<br/>
+--- Sending user email confirmation after user placed order.<br/>
+--- User can leave comment for SiXiang to improve their service.<br/>
+--- Rewards module.<br/>
+--- Phone gallery page.<br/>
+--- More dummy data to populate DB.
+--- Declaimer part.<br/><br/>
+
+Unregistered user can browse dishes and place order. Once placed order, a new account will be automatically created based on the user's email in order to get reward points.<br/>
+Registered user can login to check the reward points and redeem gift --- probably food coupon :) (further version).<br/><br/>
+
+
+Please check the demo for V1.1 version of application: https://youtu.be/KpZa3jrEf90
+Please check the demo for V1.2 version of application: 
 
 Home page:
 ![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207316/b16cb0c6-70f8-11e6-8d24-d64820e1183c.jpg)
