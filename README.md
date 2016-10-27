@@ -22,11 +22,10 @@ Added: <br/>
 --- More dummy data to populate DB.
 --- Declaimer part.<br/><br/>
 
-Unregistered user can browse dishes and place order. Once placed order, a new account will be automatically created based on the user's email in order to get reward points.<br/>
+Unregistered user can browse dishes and place order. Once placed order, a new account will be automatically created based on the user's input email in order to get reward points. Default password is "123456". <br/>
 Registered user can login to check the reward points and redeem gift --- probably food coupon :) (further version).<br/><br/>
 
-
-Please check the demo for V1.1 version of application: https://youtu.be/KpZa3jrEf90
+Please check the demo for V1.1 version of application: https://youtu.be/KpZa3jrEf90 <br/>
 Please check the demo for V1.2 version of application: 
 
 Home page:
