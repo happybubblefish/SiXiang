@@ -30,13 +30,13 @@ Please check the demo for V1.1 version of application: https://youtu.be/KpZa3jrE
 Please check the demo for V1.2 version of application: 
 
 Home page:
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207316/b16cb0c6-70f8-11e6-8d24-d64820e1183c.jpg)
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207318/b52a2266-70f8-11e6-9fb5-ce2aea12d31c.jpg)
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207322/b736019c-70f8-11e6-96c2-2b566de281a8.jpg)
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207323/b8c0d38e-70f8-11e6-8450-6e2976d8a690.jpg)
+![index](https://cloud.githubusercontent.com/assets/7445923/19777760/aeec3450-9c47-11e6-9ab3-0f8f0a6cef5e.png)
+![index2](https://cloud.githubusercontent.com/assets/7445923/19777763/b341fb2a-9c47-11e6-82d6-0a35ebbd8f15.png)
+![index3](https://cloud.githubusercontent.com/assets/7445923/19777764/b568938c-9c47-11e6-8bb4-265c1f471610.png)
+![index4](https://cloud.githubusercontent.com/assets/7445923/19777765/b8106074-9c47-11e6-9abf-767466c06f2a.png)
 
 Menu page:
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207324/baafd244-70f8-11e6-837d-94e7909f2366.jpg)
+
 
 Shopping cart page:
 ![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207325/bcd40a36-70f8-11e6-939b-80c415a0c120.jpg)
