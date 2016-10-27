@@ -36,7 +36,23 @@ Home page:
 ![index4](https://cloud.githubusercontent.com/assets/7445923/19777765/b8106074-9c47-11e6-9abf-767466c06f2a.png)
 
 Menu page:
-
+![menu](https://cloud.githubusercontent.com/assets/7445923/19777767/bcc304d2-9c47-11e6-96d1-ac7192a56e72.png)
 
 Shopping cart page:
-![alt tag](https://cloud.githubusercontent.com/assets/7445923/18207325/bcd40a36-70f8-11e6-939b-80c415a0c120.jpg)
+![shoppingcart](https://cloud.githubusercontent.com/assets/7445923/19777921/5f8b2906-9c48-11e6-9f52-4080e96e80ce.png)
+
+Photogallery page:
+![photogallery](https://cloud.githubusercontent.com/assets/7445923/19777774/c4680f48-9c47-11e6-8a97-44f98340eeff.png)
+
+Login page:
+![login](https://cloud.githubusercontent.com/assets/7445923/19777778/ca9df058-9c47-11e6-9d84-8a19ec79ed81.png)
+
+Registration page:
+![registration](https://cloud.githubusercontent.com/assets/7445923/19777780/ce6ae1a0-9c47-11e6-8198-f944d53e8702.png)
+
+Profile page:
+![profile](https://cloud.githubusercontent.com/assets/7445923/19778005/c74c3da0-9c48-11e6-88c5-74421702b7ee.png)
+
+Overlay effect:
+![overlay](https://cloud.githubusercontent.com/assets/7445923/19777925/62a64ab2-9c48-11e6-8ee6-b3b3d04ff159.png)
+
